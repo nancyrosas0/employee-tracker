@@ -1,0 +1,9 @@
+//build 3 tables
+
+// DROP DATABASE IF EXISTS
+USE 
+CREATE
+
+
+
+name VARCHAR(30)
