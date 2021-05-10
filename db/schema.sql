@@ -8,7 +8,7 @@ DROP DATABASE IF EXISTS employee;
 
 CREATE TABLE department(
     id INT AUTO_INCREMENT NOT NULL,
-    name VARCHAR(30) NOT NULL;
+    department_id VARCHAR(30) NOT NULL;
     PRIMARY KEY(id)
 );
 
@@ -25,6 +25,6 @@ CREATE TABLE employees(
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT NOT NULL,
-    manager_idd INT NOT NULL,
+    manager_id INT NOT NULL,
     PRIMARY KEY(id)
 );
