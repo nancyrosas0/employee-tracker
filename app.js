@@ -1,5 +1,5 @@
 //this is where inquirer questions are housed
-//const db = require('./db/connection');
+const db = require('./db/connection');
 const inquirer = require('inquirer');
 //const table = require('console.table');
 
@@ -15,29 +15,27 @@ const promptUser = () => {
     .then (data => {
         if (data.initial == 'Add a Department') {
             addDepartment()
-        }
-    });
+        }  else if (data.initial == 'View All Departments') {
+            db.query (`SELECT employees.first_name, employees.last_name, department.name
+                AS department FROM employees
+                JOIN roles ON employees.role_id = roles_id
+                JOIN department ON roles.department_id = department.role_id
+                ORDER BY employees.id;`
+            )}
+        });
 };
 
-
     
-// // ADD A DEPARTMENT
-//     function addDepartment() {
-//         .prompt([
-//             {
-//                 type: 'input',
-//                 name: 'department',
-//                 message: 'What Department would you like to add?',
-//               },
-//         ])
-//     } else if (data.initial == 'View All Departments') {
-//         db.query (`SELECT employees.first_name, employees.last_name, department.name
-//             AS department FROM employees
-//             JOIN roles ON employees.role_id = roles_id
-//             JOIN department ON roles.department_id = department.role_id
-//             ORDER BY employees.id;`
-
-//         }}
+// ADD A DEPARTMENT
+function addDepartment() {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'department',
+            message: 'What Department would you like to add?',
+            },
+    ])
+}
 
 
 

@@ -1,14 +1,8 @@
-//build 3 tables
-
-DROP DATABASE IF EXISTS department;
-DROP DATABASE IF EXISTS roles;
-DROP DATABASE IF EXISTS employee;
-
-
+USE employeeTracker_db;
 
 CREATE TABLE department(
     id INT AUTO_INCREMENT NOT NULL,
-    department_id VARCHAR(30) NOT NULL;
+    department_id VARCHAR(30) NOT NULL,
     PRIMARY KEY(id)
 );
 
