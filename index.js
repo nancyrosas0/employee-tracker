@@ -77,14 +77,19 @@ const userAction = () => {
 const viewDepartments = () => {
     var query = 'SELECT * FROM department'
     db.query(query, function(err, results) {
-        console.log('hel;lo')
+        console.log('hello');
         console.log(results);
     }) 
     userAction();
 }
 
 const viewRoles = () => {
-
+    var query = 'SELECT * FROM roles'
+    db.query(query, function(err, results) {
+        console.log('hello');
+        console.log(results);
+    }) 
+    userAction();
 }
 
 const viewEmployees = () => {

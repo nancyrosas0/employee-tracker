@@ -12,7 +12,7 @@ VALUES
 ('Accountant', 60000, 1),
 ('Accounting Manager', 100000, 1),
 ('HR Generalist', 75000, 2),
-('HR Manager', 120000, 2),
+('HR Manager', 1200000, 2),
 ('Warehouse', 50000, 3),
 ('Transportation Manager', 75000, 4);
 
