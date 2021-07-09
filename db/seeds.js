@@ -1,6 +1,6 @@
 // add employee names, salaries and roles
 
-INSERT INTO department(department_id)
+INSERT INTO department(department_name)
 VALUES
 ('Accounting'),
 ('Human Resources'),

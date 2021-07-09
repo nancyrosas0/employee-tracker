@@ -75,19 +75,19 @@ const userAction = () => {
 }
 
 const viewDepartments = () => {
-    var query = 'SELECT * FROM department'
-    db.query(query, function(err, results) {
-        console.log('hello');
-        console.log(results);
+    const sql = 'SELECT * FROM department'
+    db.query(sql, (err, res) => {
+        if (err) throw err
+        console.table(res)
     }) 
     userAction();
 }
 
 const viewRoles = () => {
-    var query = 'SELECT * FROM roles'
-    db.query(query, function(err, results) {
-        console.log('hello');
-        console.log(results);
+    const sql = 'SELECT roles.title, roles_id, department.department_name FROM roles JOIN department ON roles.department_id = department.id';
+    db.query(sql, (err, res) => {
+        if (err) throw err
+        console.table(res)
     }) 
     userAction();
 }
@@ -95,9 +95,11 @@ const viewRoles = () => {
 const viewEmployees = () => {
     //query db to get all info
     //return info
-
-
-    
+    var query = 'SELECT * FROM employees'
+    db.query(query, function(err, results) {
+        console.log('hello');
+        console.log(results);
+    }) 
     //ask the user for action again
     userAction()
 }
