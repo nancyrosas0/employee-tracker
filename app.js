@@ -9,18 +9,22 @@ const promptUser = () => {
             type: 'list',
             name: 'initial',
             message: 'What would you like to do?',
-            choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'Update an Employee Role']
+            choices: [
+            'View All Departments', 
+            'View All Roles', 
+            'View All Employees', 
+            'Add a Department', 
+            'Add a Role', 
+            'Add an Employee', 
+            'Update an Employee Role'
+            ]
         }
     ])
     .then (data => {
         if (data.initial == 'Add a Department') {
             addDepartment()
         }  else if (data.initial == 'View All Departments') {
-            db.query (`SELECT employees.first_name, employees.last_name, department.department_name
-                AS department FROM employees
-                JOIN roles ON employees.role_id = roles_id
-                JOIN department ON roles.department_name = department.department_name
-                ORDER BY employees.id;`
+            db.query (`SELECT * FROM department`
             )}
         });
 };
@@ -37,40 +41,37 @@ function addDepartment() {
     ])
 }
 
-
-
-
-// const prompEmployee = employeeData => {
-//     console.log(`
-//     ================
-//     Add a Role
-//     ================
-//     `);
-//     .prompt([
-//         {
-//             type: 'input',
-//             name: 'name',
-//             message: 'What is the name of this role?',
-//         },
-//         {
-//             type: 'input',
-//             name: 'salary',
-//             message: 'What is the salary for this role?',
-//         },
-//         {
-//             type: 'input',
-//             name: 'department',
-//             message: 'What department will this role report to?',
-//         },
-//     ])
-
+const prompEmployee = employeeData => {
+    console.log(`
+    ================
+    Add a Role
+    ================
+    `)
+    .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the name of this role?',
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'What is the salary for this role?',
+        },
+        {
+            type: 'input',
+            name: 'department',
+            message: 'What department will this role report to?',
+        },
+    ]);
+};
    
 //     const prompEmployee = employeeData => {
 //         console.log(`
 //         ================
 //         Add an Employee
 //         ================
-//         `);
+//         `)
 //         .prompt([
 //             {
 //                 type: 'input',
@@ -93,16 +94,17 @@ function addDepartment() {
 //                 name: 'manager',
 //                 message: 'What manager will this employee report to?',
 //             },
-//         ]).then(data => 
+//         ])
+//         // .then(data => 
             
-//             )
+//         //     );
 
 //         const prompEmployee = employeeData => {
 //             console.log(`
 //             ================
 //             Add an Employee Role
 //             ================
-//             `);
+//             `)
 //             .prompt([
 //                 {
 //                     type: 'checkbox',
@@ -118,3 +120,4 @@ function addDepartment() {
 //     });
 
 promptUser()
+
