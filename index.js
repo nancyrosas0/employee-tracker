@@ -84,7 +84,7 @@ const viewDepartments = () => {
 }
 
 const viewRoles = () => {
-    const sql = 'SELECT roles.title, roles_id, department.department_name FROM roles JOIN department ON roles.department_id = department.id';
+    const sql = 'SELECT * FROM role';
     db.query(sql, (err, res) => {
         if (err) throw err
         console.table(res)
@@ -95,22 +95,69 @@ const viewRoles = () => {
 const viewEmployees = () => {
     //query db to get all info
     //return info
-    var query = 'SELECT * FROM employees'
+    var query = 'SELECT * FROM employee'
     db.query(query, function(err, results) {
         console.log('hello');
         console.log(results);
     }) 
     //ask the user for action again
-    userAction()
+    userAction();
 }
 
 const addDepartment = () => {
-
-}
+        inquirer.prompt({
+            type: 'input',
+            message: 'Enter Department Name',
+            name: 'department'
+        })
+        .then(function(answer) {
+            db.query(
+                "INSERT INTO department SET ?",
+                {
+                    name: res.name
+                },
+                function(err, answer) {
+                    if (err) {
+                        throw err;
+                    }
+                }
+            )
+        })
+        userAction()
+    }
+    
 
 const addRole = () => {
+    db.query('SELECT role.title AS Title, role.salary AS Salary FROM role', function(err,res) {
+        inquirer.prompt([
+            {
+                name: 'Title',
+                type: 'input',
+                message: "What Role will this Title have?"
+            },
+            {
+                name: "Salary",
+                type: 'input',
+                message: "Enter the Role's Salary"
+            }
 
+        ]).then(function(res) {
+            db.query(
+                "INSERT INTO role SET ?",
+                {
+                    title: res.Title,
+                    salary: res.Salary,
+                },
+                function(err) {
+                    if (err) throw err
+                    conesole.table(res);
+                }
+            )
+        });
+    }); 
+    userAction()
 }
+
 
 const addEmployee = () => {
 
